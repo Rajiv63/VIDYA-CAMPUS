@@ -1,0 +1,146 @@
+<!-- Spinner Overlay -->
+<div *ngIf="isLoading" class="loading-overlay">
+  <div class="spinner"></div>
+</div>
+
+<!-- Logo & Footer -->
+<div class="logo-top-left"></div>
+<!-- <div class="copyright-text">©2025 Agrinet Crafted by IoTechWorld</div> -->
+
+<!-- Signup Container -->
+<div class="signup-container" *ngIf="!isLoading">
+  <h2>Sign Up</h2>
+
+  <form
+    #signupForm="ngForm"
+    (ngSubmit)="onSubmit(signupForm)"
+    autocomplete="off"
+  >
+    <!-- First Name -->
+    <div class="form-group">
+      <input
+        type="text"
+        name="firstName"
+        [(ngModel)]="user.firstName"
+        required
+        placeholder="First Name"
+        #firstNameRef="ngModel"
+      />
+      <div *ngIf="firstNameRef.invalid && firstNameRef.touched" class="error">
+        <small>First name is required.</small>
+      </div>
+    </div>
+
+    <!-- Last Name -->
+    <div class="form-group">
+      <input
+        type="text"
+        name="lastName"
+        [(ngModel)]="user.lastName"
+        required
+        placeholder="Last Name"
+        #lastNameRef="ngModel"
+      />
+      <div *ngIf="lastNameRef.invalid && lastNameRef.touched" class="error">
+        <small>Last name is required.</small>
+      </div>
+    </div>
+
+    <!-- Phone (10-digit Indian format) -->
+    <div class="form-group">
+      <input
+        type="tel"
+        name="phone"
+        [(ngModel)]="user.phone"
+        required
+        placeholder="Enter 10-digit phone number"
+        pattern="^[6-9]\d{9}$"
+        #phoneRef="ngModel"
+      />
+      <div *ngIf="phoneRef.invalid && phoneRef.touched" class="error">
+        <small *ngIf="phoneRef.errors?.['required']"
+          >Phone number is required.</small
+        >
+        <small *ngIf="phoneRef.errors?.['pattern']"
+          >Enter a valid 10-digit Indian number.</small
+        >
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Email"
+        required
+        pattern="^[a-zA-Z0-9_]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$"
+        ngModel
+        #emailRef="ngModel"
+      />
+      <div *ngIf="emailRef.invalid && emailRef.touched" class="error">
+        <small *ngIf="emailRef.errors?.['required']">Email is required.</small>
+        <small *ngIf="emailRef.errors?.['pattern']">
+          Invalid email format.
+        </small>
+      </div>
+    </div>
+    <!-- Branch -->
+    <div class="form-group">
+      <select
+        name="branch"
+        [(ngModel)]="user.branch"
+        required
+        #branchRef="ngModel"
+      >
+        <option value="" disabled selected>Select Branch</option>
+        <option value="CSE">Computer Science</option>
+        <option value="IT">Information Technology</option>
+        <option value="ECE">Electronics and Communication</option>
+        <option value="EEE">Electrical and Electronics</option>
+        <option value="ME">Mechanical</option>
+        <!-- Add more branches if needed -->
+      </select>
+      <div *ngIf="branchRef.invalid && branchRef.touched" class="error">
+        <small>Branch is required.</small>
+      </div>
+    </div>
+
+    <!-- Year -->
+    <div class="form-group">
+      <select name="year" [(ngModel)]="user.year" required #yearRef="ngModel">
+        <option value="" disabled selected>Select Year</option>
+        <option value="1">1st Year</option>
+        <option value="2">2nd Year</option>
+        <option value="3">3rd Year</option>
+        <option value="4">4th Year</option>
+      </select>
+      <div *ngIf="yearRef.invalid && yearRef.touched" class="error">
+        <small>Year is required.</small>
+      </div>
+    </div>
+
+    <!-- Password (no pattern validation) -->
+    <div class="form-group">
+      <input
+        type="password"
+        name="password"
+        [(ngModel)]="user.password"
+        required
+        placeholder="Password"
+        #passwordRef="ngModel"
+      />
+      <div *ngIf="passwordRef.invalid && passwordRef.touched" class="error">
+        <small *ngIf="passwordRef.errors?.['required']"
+          >Password is required.</small
+        >
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="!signupForm.valid">Sign Up</button>
+  </form>
+
+  <p>Already have an account? <a routerLink="/login">Login here</a></p>
+</div>

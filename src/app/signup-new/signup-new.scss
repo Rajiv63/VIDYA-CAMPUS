@@ -1,0 +1,191 @@
+:host {
+  background-image: url("../../assets/back.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  /*  flex to center content */
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.logo-top-left {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  width: 130px;
+  height: 150px;
+  background-image: url("../../assets/logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left center;
+  z-index: 1000;
+}
+
+.signup-container {
+  max-width: 300px;
+  width: 200%;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  div {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px;
+    /* Match login input size */
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    /* Match rounded corner style */
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Match background color */
+    color: #333;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+
+  input::placeholder {
+    color: #666;
+    /* Optional: similar placeholder color */
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    background: #1a49dc;
+    /* Match login button blue color */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover:not(:disabled) {
+      background: #003bb3;
+    }
+
+    &:disabled {
+      background: #aaa;
+      cursor: not-allowed;
+    }
+  }
+
+  p {
+    margin-top: 1rem;
+    text-align: center;
+
+    a {
+      color: #0d56cc;
+      text-decoration: underline;
+    }
+  }
+}
+
+.copyright-text {
+  position: fixed;
+  bottom: 1rem; // distance from bottom
+  left: 50%; // center horizontally
+  transform: translateX(-50%); // adjust to exact center
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  z-index: 999;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+
+}
+
+// Mobile Responsive
+@media (max-width: 500px) {
+  .signup-box {
+    padding: 1.5rem;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.radio-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+
+  label {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+
+    input[type="radio"] {
+      margin-right: 0.5rem;
+      accent-color: #0707e7; //Red color (change as needed)
+    }
+  }
+}
+
+select {
+  width: 100%;
+  padding: 10px 10px;
+  border: 1px solid #cacaca;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #fff;
+  appearance: none;
+  /* Remove default arrow in some browsers */
+  // background-image: url('data:image/svg+xml;utf8,<svg fill="%23444" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  outline: none;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #ccc;
+  border-top: 5px solid #4caf50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}

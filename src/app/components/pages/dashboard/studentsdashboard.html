@@ -1,0 +1,123 @@
+<div class="logo-top-left"></div>
+<div class="dashboard-container">
+  <!-- Header -->
+  <div class="dashboard-header">
+    <h2>Welcome, {{ studentData?.name || "Students!" }}</h2>
+    <div class="menu-wrapper">
+      <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+      <div class="sidebar-menu" *ngIf="menuOpen">
+        <p><strong>Email:</strong> {{ studentData?.email }}</p>
+        <p><strong>Branch:</strong> {{ studentData?.branch }}</p>
+        <p><strong>Year:</strong> {{ studentData?.year }}</p>
+        <p><strong>Roll No:</strong> {{ studentData?.rollNo }}</p>
+        <p><strong>Section:</strong>{{ studentData?.section }}</p>
+        <button class="logout-btn" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Selectors -->
+  <div class="selector">
+    <label for="branch">Branch:</label>
+    <select id="branch" [(ngModel)]="selectedBranch" (change)="onChange()">
+      <option *ngFor="let b of branches" [value]="b">{{ b }}</option>
+    </select>
+
+    <label for="year">Year:</label>
+    <select id="year" [(ngModel)]="selectedYear" (change)="onChange()">
+      <option *ngFor="let y of years" [value]="y">{{ y }}</option>
+    </select>
+
+    <!-- Group Section + Semester Side by Side -->
+    <div class="section-semester-wrapper">
+      <div class="dropdown-group">
+        <label for="section">Section:</label>
+        <select
+          id="section"
+          [(ngModel)]="selectedSection"
+          (change)="onChange()"
+        >
+          <option *ngFor="let s of sections" [value]="s">{{ s }}</option>
+        </select>
+      </div>
+
+      <div class="dropdown-group">
+        <label for="semester">Semester:</label>
+        <select
+          id="semester"
+          [(ngModel)]="selectedSemester"
+          (change)="onChange()"
+        >
+          <option value="">Select Semester</option>
+          <option *ngFor="let sem of semesters" [value]="sem">{{ sem }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feature Cards -->
+  <div class="cards" *ngIf="selectedBranch && selectedYear">
+    <div class="card" (click)="goTo('Room')">🏫 Room Details</div>
+    <div class="card" (click)="goTo('Lab')">🧪 Labs</div>
+    <div class="card" (click)="goTo('Calendar')">📅 Calendar</div>
+    <div class="card" (click)="goTo('Attendance')">📊 Attendance</div>
+    <div class="card" (click)="goToSyllabusPage()">📘 Syllabus</div>
+    <div class="card" (click)="goTo('Timetable')">📖 Timetable</div>
+  </div>
+
+  <!-- Conditional Sections -->
+  <div class="section-content" *ngIf="activeSection === 'Room'">
+    <h3>🏫 Room Details</h3>
+    <p>{{ room }}</p>
+  </div>
+
+  <div class="section-content" *ngIf="activeSection === 'Lab'">
+    <h3>🧪 Lab Details</h3>
+    <p>{{ lab }}</p>
+  </div>
+
+  <!-- <div class="section-content" *ngIf="activeSection === 'Syllabus'">
+    <h3>📘 Syllabus</h3>
+    <p>{{ syllabus }}</p>
+  </div> -->
+
+  <div class="section-content" *ngIf="activeSection === 'Timetable'">
+    <h3>📖 Timetable</h3>
+    <p>{{ timetable }}</p>
+  </div>
+
+  <div class="section-content" *ngIf="activeSection === 'Calendar'">
+    <h3>📅 Academic Calendar</h3>
+    <div id="calendar">[Calendar Placeholder]</div>
+  </div>
+
+  <div class="section-content" *ngIf="activeSection === 'Attendance'">
+    <app-attendance></app-attendance>
+  </div>
+</div>
+<!-- <div class="section-content" *ngIf="activeSection === 'Timetable'">
+  <h3>📖 Timetable - {{ selectedBranch }} {{ selectedYear }} {{ selectedSection }}</h3>
+
+  <table *ngIf="timetable?.length > 0">
+    <thead>
+      <tr>
+        <th>Day</th>
+        <th>Time</th>
+        <th>Subject</th>
+        <th>Teacher</th>
+        <th>Room</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of timetable">
+        <td>{{ item.day }}</td>
+        <td>{{ item.time }}</td>
+        <td>{{ item.subject }}</td>
+        <td>{{ item.teacher }}</td>
+        <td>{{ item.room }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="timetable?.length === 0">No timetable data available.</p>
+</div> -->

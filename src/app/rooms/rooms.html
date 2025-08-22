@@ -1,0 +1,16 @@
+<div class="rooms-container">
+  <h2>Room Details</h2>
+
+  <p><strong>Branch:</strong> {{ branch }}</p>
+  <p><strong>Year:</strong> {{ year }}</p>
+
+  <div *ngIf="roomDetails.length > 0; else noRooms">
+    <ul>
+      <li *ngFor="let room of roomDetails">{{ room }}</li>
+    </ul>
+  </div>
+
+  <ng-template #noRooms>
+    <p>No room data available for selected branch and year.</p>
+  </ng-template>
+</div>

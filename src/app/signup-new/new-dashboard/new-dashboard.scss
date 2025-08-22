@@ -1,0 +1,107 @@
+:host {
+    background-image: url("../../../assets/flashmeassage.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    display: block;
+    z-index: 2;
+    background-position: center;
+    top: 0;
+    left: 0;
+}
+
+.logo-top-left {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    width: 120px;
+    height: 60px;
+    background-image: url("../../../assets/logo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left center;
+    z-index: 1000;
+}
+
+.logo-top-left {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1000;
+
+    img {
+        height: 60px;
+        width: auto;
+        object-fit: contain;
+    }
+}
+
+.copyright-text {
+    position: fixed;
+    bottom: 1rem; // distance from bottom
+    left: 50%; // center horizontally
+    transform: translateX(-50%); // adjust to exact center
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    z-index: 999;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+}
+
+.success-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); // This centers it
+    width: 90%;
+    max-width: 500px;
+    padding: 24px;
+    text-align: center;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #f0f8f0;
+    font-family: "Segoe UI", sans-serif;
+
+    h2 {
+        margin-bottom: 12px;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #056cf4;
+    }
+
+    p {
+        margin: 6px 0;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeout {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}

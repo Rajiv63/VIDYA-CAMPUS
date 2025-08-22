@@ -1,0 +1,186 @@
+// 🎨 Color Theme
+$primary-color: #1e3a8a;
+$dark-color: #0f172a;
+$light-accent: #dbeafe;
+$highlight-color: #3b82f6;
+$text-color: #1e293b;
+$border-radius-lg: 22px;
+$box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+
+// 🧩 Main Container
+.syllabus-container {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+  justify-content: center;
+  padding: 40px;
+  gap: 30px;
+  background: linear-gradient(145deg, #f0f9ff, #e0f2fe);
+  border-top-left-radius: $border-radius-lg;
+  border-bottom-right-radius: $border-radius-lg;
+  box-shadow: $box-shadow;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+// 📘 Centered Title
+.syllabus-title {
+  width: 100%;
+  text-align: center;
+  font-size: 36px;
+  color: $primary-color;
+  font-weight: 900;
+  margin-bottom: 40px;
+  animation: fadeInDown 0.8s ease-in-out;
+  letter-spacing: 1px;
+}
+
+// 📚 Subject List Panel
+.subject-list {
+  width: 260px;
+  max-width: 100%;
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: $box-shadow;
+  box-sizing: border-box;
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 500;
+    color: $text-color;
+    border-radius: 12px;
+    border: 1.5px solid #cbd5e1;
+    margin-bottom: 16px;
+    background-color: #fff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    &::placeholder {
+      font-weight: 600;
+      font-size: 13px;
+      color: #64748b;
+      opacity: 0.8;
+    }
+
+    &:focus {
+      border-color: lighten($highlight-color, 20%);
+      outline: none;
+      box-shadow: 0 0 1px 2px rgba($highlight-color, 0.3);
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  li {
+    padding: 10px 14px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: $dark-color;
+    word-wrap: break-word;
+
+    &:hover,
+    &.active {
+      background: $highlight-color;
+      color: white;
+      font-weight: 600;
+    }
+  }
+}
+
+// 📄 Syllabus Content Area
+.syllabus-detail {
+  flex: 1;
+  min-width: 320px;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: $box-shadow;
+  transition: all 0.3s;
+}
+
+// 📦 Individual Unit Box
+.unit-box {
+  margin-bottom: 24px;
+  background: $light-accent;
+  padding: 20px;
+  border-left: 6px solid $primary-color;
+  border-radius: 14px;
+  transition: background 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    background-color: lighten($light-accent, 10%);
+    transform: translateY(-5px);
+  }
+
+  .unit-header {
+    font-size: 18px;
+    font-weight: 600;
+    color: $dark-color;
+    margin-bottom: 10px;
+  }
+
+  .unit-body {
+    font-size: 15px;
+    color: #334155;
+    padding-left: 10px;
+  }
+}
+
+// 🔙 Back Button
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 24px;
+  background: $primary-color;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}
+
+// ✨ Fade Animation
+@keyframes fadeInDown {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// 📱 Responsive Design
+@media (max-width: 768px) {
+  .syllabus-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .subject-list,
+  .syllabus-detail {
+    width: 100%;
+  }
+
+  .syllabus-title {
+    font-size: 26px;
+  }
+}

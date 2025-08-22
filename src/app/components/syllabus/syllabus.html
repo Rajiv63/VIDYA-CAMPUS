@@ -1,0 +1,95 @@
+<!-- <div class="page-container">
+ 
+  <div class="form-box">
+    <label><strong>Branch:</strong></label>
+    <select [(ngModel)]="branch">
+      <option *ngFor="let b of branches">{{ b }}</option>
+    </select>
+
+    <label><strong>Year:</strong></label>
+    <select [(ngModel)]="year">
+      <option *ngFor="let y of years">{{ y }}</option>
+    </select>
+
+    <label><strong>Semester:</strong></label>
+    <select [(ngModel)]="semester">
+      <option *ngFor="let sem of semesters">{{ sem }}</option>
+    </select>
+
+    <div class="button-row">
+      <button (click)="onSubmit()">Submit</button>
+      <button (click)="goBack()">Back</button>
+    </div>
+  </div> -->
+
+<!-- Centered Syllabus Display  -->
+<!-- <div class="syllabus-box" *ngIf="submitted">
+    <h3>Syllabus Details</h3>
+    <p><strong>Branch:</strong> {{ branch }}</p>
+    <p><strong>Year:</strong> {{ year }}</p>
+    <p><strong>Semester:</strong> {{ semester }}</p>
+  </div>
+</div> -->
+<!-- <h2>📘 Syllabus Units</h2>
+<button (click)="goBack()" class="back-btn">Back</button>
+<div *ngIf="syllabus.length > 0">
+  <div
+    *ngFor="let unit of syllabus"
+    class="unit-card"
+    (click)="toggleUnit(unit)"
+  >
+    <div class="unit-title">
+      {{ unit.title }}
+      <span class="arrow">{{ unit.expanded ? "▲" : "▼" }}</span>
+    </div>
+    <div class="unit-content" *ngIf="unit.expanded">
+      <p>{{ unit.content }}</p>
+    </div>
+  </div>
+</div> -->
+
+<!-- ✅ Main Syllabus Content -->
+<h2 class="syllabus-title">📘Syllabus Units</h2>
+<button (click)="goBack()" class="back-btn">Back</button>
+
+<!-- Syllabus Container -->
+<div class="syllabus-container">
+  <!-- 📚 Subject List Section (Left) -->
+  <div class="subject-list">
+    <input
+      type="text"
+      placeholder="Search subject..."
+      [(ngModel)]="searchTerm"
+    />
+    <ul>
+      <li
+        *ngFor="let subject of filteredSubjects"
+        [class.active]="selectedSubject?.name === subject.name"
+        (click)="selectSubject(subject)"
+      >
+        {{ subject.name }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- 📘 Syllabus Detail Section (Right) -->
+  <div class="syllabus-detail" *ngIf="selectedSubject">
+    <h2>{{ selectedSubject.name }} Syllabus</h2>
+
+    <div
+      *ngFor="let unit of selectedSubject.units; index as i"
+      class="unit-box"
+    >
+      <!-- Unit Header (Toggle) -->
+      <div class="unit-header" (click)="toggleUnit(i)">
+        {{ unit.split(":")[0] }}
+        <span>{{ unitExpanded[i] ? "▲" : "▼" }}</span>
+      </div>
+
+      <!-- Unit Body (Conditional) -->
+      <div class="unit-body" *ngIf="unitExpanded[i]">
+        {{ unit.split(":")[1] }}
+      </div>
+    </div>
+  </div>
+</div>

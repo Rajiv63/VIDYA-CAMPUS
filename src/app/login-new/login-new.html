@@ -1,0 +1,65 @@
+<div class="logo-top-left"></div>
+<!-- Spinner Loader -->
+<div *ngIf="isLoading" class="spinner-wrapper">
+  <div class="pulse-dot"></div>
+</div>
+<div class="background">
+  <div class="container">
+    <form
+      (ngSubmit)="onSubmit(loginForm)"
+      #loginForm="ngForm"
+      autocomplete="off"
+    >
+      <h2>Welcome</h2>
+
+      <!-- Email -->
+      <div class="form-group">
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          required
+          pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+          ngModel
+          #emailRef="ngModel"
+        />
+        <div *ngIf="emailRef.invalid && emailRef.touched" class="error">
+          <small *ngIf="emailRef.errors?.['required']"
+            >Email is required.</small
+          >
+          <small *ngIf="emailRef.errors?.['pattern']"
+            >Please enter a valid email address.</small
+          >
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group password-wrapper">
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          id="password"
+          name="password"
+          required
+          placeholder=" "
+          ngModel
+          #passwordRef="ngModel"
+        />
+        <label for="password">Password</label>
+        <i
+          class="fa-solid"
+          [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+          (click)="togglePasswordVisibility()"
+        ></i>
+      </div>
+
+      <!-- Login Button -->
+      <button type="submit" [disabled]="loginForm.invalid">Login</button>
+
+      <div class="signup-link">
+        Don't have an account?
+        <a routerLink="/signup">Sign up here</a>
+      </div>
+    </form>
+  </div>
+</div>
