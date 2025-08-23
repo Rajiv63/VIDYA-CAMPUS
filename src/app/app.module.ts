@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routes';
-import { App } from './app'; // 👈 root app component
+import { App } from './app';
 import { LoginNew } from './login-new/login-new';
 import { SignupNew } from './signup-new/signup-new';
 import { NewDashboard } from './signup-new/new-dashboard/new-dashboard';
